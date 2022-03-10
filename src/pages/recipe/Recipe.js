@@ -1,7 +1,7 @@
 import "./Recipe.css";
 
 const Recipe = () => {
-  return <div></div>;
+  return <div>Recipe</div>;
 };
 
 export default Recipe;

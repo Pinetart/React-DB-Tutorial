@@ -1,15 +1,16 @@
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Redirect } from "react-router-dom";
-import Home from "./components/pages/home/Home";
-import Create from "./components/pages/create/Create";
-import Recipe from "./components/pages/recipe/Recipe";
-import Search from "./components/pages/search/Search";
+import Home from "./pages/home/Home";
+import Create from "./pages/create/Create";
+import Recipe from "./pages/recipe/Recipe";
+import Search from "./pages/search/Search";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <Router>
       <div className="App">
+        <Navbar />
         <Switch>
           <Route exact path="/">
             <Home />
@@ -20,11 +21,8 @@ function App() {
           <Route path="/recipes/:id">
             <Recipe />
           </Route>
-          <Route path="/">
+          <Route path="/search">
             <Search />
-          </Route>
-          <Route path="*">
-            <Redirect to="/" />
           </Route>
         </Switch>
       </div>
