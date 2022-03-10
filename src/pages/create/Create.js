@@ -1,18 +1,42 @@
 import "./Create.css";
-import { useFetch } from "../../hooks/useFetch";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { useHistory } from "react-router-dom";
 
 const Create = () => {
   const [title, setTitle] = useState("");
   const [method, setMethod] = useState("");
+  const [newIngredient, setNewIngredient] = useState("");
+  const [ingredients, setIngredients] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [cookingTime, setCookingTime] = useState(0);
+  const ingredientInput = useRef(null);
+
+  const history = useHistory();
 
   const handleSubmit = (e) => {
+    setIsLoading(true);
     e.preventDefault();
-    console.log(title, method, cookingTime);
-    setTitle("");
-    setMethod("");
-    setCookingTime(0);
+    const recipe = { title, method, cookingTime, ingredients };
+
+    fetch(`http://localhost:8000/recipes`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(recipe),
+    }).then(() => {
+      setIsLoading(false);
+      history.push("/");
+    });
+  };
+
+  const handleAdd = (e) => {
+    e.preventDefault();
+    const ing = newIngredient.trim();
+
+    if (ing && !ingredients.includes(ing)) {
+      setIngredients((prevIngredients) => [...prevIngredients, newIngredient]);
+    }
+    setNewIngredient("");
+    ingredientInput.current.focus();
   };
 
   return (
@@ -30,6 +54,28 @@ const Create = () => {
             }}
           />
         </label>
+        <label>
+          <span>Recipe Ingredients:</span>
+          <div className="ingredients">
+            <input
+              ref={ingredientInput}
+              value={newIngredient}
+              type="text"
+              onChange={(e) => {
+                setNewIngredient(e.target.value);
+              }}
+            />
+            <button className="btn" onClick={handleAdd}>
+              Add
+            </button>
+          </div>
+        </label>
+        <p>
+          Current Ingredients:{" "}
+          {ingredients.map((ing) => (
+            <em key={ing}>{ing}</em>
+          ))}
+        </p>
         <label>
           <span>Recipe method:</span>
           <textarea
@@ -51,7 +97,12 @@ const Create = () => {
             }}
           />
         </label>
-        <button type="submit">Submit</button>
+        {!isLoading && <button type="submit">Submit</button>}
+        {isLoading && (
+          <button style={{ pointerEvents: "none", width: "auto" }}>
+            Submitting
+          </button>
+        )}
       </form>
     </div>
   );

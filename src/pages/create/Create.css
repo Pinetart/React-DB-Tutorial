@@ -11,6 +11,13 @@
   margin-top: 10px;
   font-size: 0.8em;
 }
+.create p em::after {
+  content: ", ";
+}
+.create p em:last-child::after {
+  content: "";
+}
+
 .create button {
   display: block;
   width: 100px;
@@ -23,4 +30,11 @@
   cursor: pointer;
   text-decoration: none;
   margin: 20px auto;
+}
+.ingredients {
+  display: flex;
+  align-items: center;
+}
+.ingredients button {
+  margin: 0 0 0 10px;
 }
