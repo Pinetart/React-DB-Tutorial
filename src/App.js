@@ -4,6 +4,7 @@ import Home from "./components/pages/Home";
 import Contact from "./components/pages/Contact";
 import About from "./components/pages/About";
 import { NavLink } from "react-router-dom";
+import Article from "./components/pages/Article";
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
           </Route>
           <Route path="/about">
             <About />
+          </Route>
+          <Route path="/articles/:id">
+            <Article />
           </Route>
         </Switch>
       </div>
