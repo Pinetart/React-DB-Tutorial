@@ -6,11 +6,13 @@ import Recipe from "./pages/recipe/Recipe";
 import Search from "./pages/search/Search";
 import Navbar from "./components/Navbar";
 import ThemeSelector from "./components/ThemeSelector";
+import { useTheme } from "./hooks/useTheme";
 
 function App() {
+  const { mode } = useTheme();
   return (
-    <Router>
-      <div className="App">
+    <div className={`App ${mode}`}>
+      <Router>
         <Navbar />
         <ThemeSelector />
         <Switch>
@@ -27,8 +29,8 @@ function App() {
             <Search />
           </Route>
         </Switch>
-      </div>
-    </Router>
+      </Router>
+    </div>
   );
 }
 

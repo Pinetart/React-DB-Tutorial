@@ -1,3 +1,9 @@
 .novalue {
   text-align: center;
 }
+.dark h2 {
+  color: #e4e4e4;
+}
+.dark .error .loading {
+  color: #e4e4e4;
+}
