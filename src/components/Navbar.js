@@ -6,15 +6,11 @@ import { useTheme } from "../hooks/useTheme";
 import "./Navbar.css";
 
 const Navbar = () => {
-  const { color, changeColor } = useTheme();
-  console.log(color);
+  const { color } = useTheme();
+
   return (
     <div className="navbar" style={{ background: color }}>
-      <nav
-        onClick={() => {
-          changeColor("pink");
-        }}
-      >
+      <nav>
         <Link to="/" className="brand">
           <h1>Cooking Ninja</h1>
         </Link>
