@@ -1,7 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
 import RecipeList from "../../components/RecipeList";
-import { useState } from "react";
 
 import "./Search.css";
 
@@ -18,7 +17,7 @@ const Search = () => {
       <h2 className="page-title">Recipes including "{query}"</h2>
       {error && <p className="error">{error}</p>}
       {isPending && <p className="loading">Loading...</p>}
-      {recipes.length !== 0 ? (
+      {recipes && recipes.length !== 0 ? (
         <RecipeList recipes={recipes} />
       ) : (
         <p className="novalue">No Results</p>
