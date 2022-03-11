@@ -20,7 +20,7 @@ const Search = () => {
       {recipes && recipes.length !== 0 ? (
         <RecipeList recipes={recipes} />
       ) : (
-        <p className="novalue">No Results</p>
+        <p className="error">No Results...</p>
       )}
     </div>
   );
