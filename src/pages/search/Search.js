@@ -10,12 +10,12 @@ const Search = () => {
   const queryParams = new URLSearchParams(queryString);
   const query = queryParams.get("q");
 
-  const { mode } = useTheme;
+  const { mode } = useTheme();
   const url = `http://localhost:8000/recipes?q=${query}`;
   const { error, isPending, data: recipes } = useFetch(url);
 
   return (
-    <div className={`${mode}`}>
+    <div className={`search ${mode}`}>
       <h2 className="page-title">Recipes including "{query}"</h2>
       {error && <p className="error">{error}</p>}
       {isPending && <p className="loading">Loading...</p>}

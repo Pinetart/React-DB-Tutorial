@@ -38,3 +38,10 @@
 .ingredients button {
   margin: 0 0 0 10px;
 }
+.create.dark,
+.create.dark h2 {
+  color: #fff;
+}
+.create.dark button {
+  background: rgba(0, 183, 255, 0.432);
+}

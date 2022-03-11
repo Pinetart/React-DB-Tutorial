@@ -1,6 +1,7 @@
 import "./Create.css";
 import { useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
+import { useTheme } from "../../hooks/useTheme";
 
 const Create = () => {
   const [title, setTitle] = useState("");
@@ -12,6 +13,7 @@ const Create = () => {
   const ingredientInput = useRef(null);
 
   const history = useHistory();
+  const { mode } = useTheme();
 
   const handleSubmit = (e) => {
     setIsLoading(true);
@@ -40,7 +42,7 @@ const Create = () => {
   };
 
   return (
-    <div className="create">
+    <div className={`create ${mode}`}>
       <h2 className="page-title">Add a New Recipe</h2>
       <form onSubmit={handleSubmit}>
         <label>

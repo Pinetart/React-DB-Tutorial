@@ -1,9 +1,7 @@
-.novalue {
-  text-align: center;
-}
-.dark h2 {
+.search.dark h2 {
   color: #e4e4e4;
 }
-.dark .error .loading {
+.search.dark .error,
+.search.dark .loading {
   color: #e4e4e4;
 }
