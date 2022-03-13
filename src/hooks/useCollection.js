@@ -8,9 +8,7 @@ export function useCollection(c) {
   const [documents, setDocuments] = useState(null);
 
   useEffect(() => {
-    let ref = collection(db, c);
-
-    const unsub = onSnapshot(ref, (snapshot) => {
+    const unsub = onSnapshot(collection(db, c), (snapshot) => {
       let results = [];
       snapshot.docs.forEach((doc) => {
         results.push({ id: doc.id, ...doc.data() });
