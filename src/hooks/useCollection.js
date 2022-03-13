@@ -19,7 +19,7 @@ export function useCollection(c) {
     });
 
     return () => unsub();
-  }, []);
+  }, [c]);
 
   return { documents };
 }
