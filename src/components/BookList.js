@@ -1,6 +1,7 @@
-import { deleteBook } from "../hooks/modifyBook";
+import { useCreateDelete } from "../hooks/useCreateDelete";
 
 export default function BookList({ books }) {
+  const { deleteBook } = useCreateDelete();
   const handleClick = async (id) => {
     await deleteBook(id);
   };

@@ -3,10 +3,11 @@ import { useState } from "react";
 // import { db } from "../firebase/config";
 // import { collection, addDoc } from "firebase/firestore";
 
-import { createBook } from "../hooks/modifyBook";
+import { useCreateDelete } from "../hooks/useCreateDelete";
 
 export default function BookForm() {
   const [newBook, setNewBook] = useState("");
+  const { createBook } = useCreateDelete();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
