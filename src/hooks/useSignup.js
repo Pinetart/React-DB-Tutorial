@@ -3,7 +3,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { useState } from "react";
 
 export function useSignup() {
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
   const [isPending, setIsPending] = useState(false);
   const { dispatch } = useAuthContext();
 
