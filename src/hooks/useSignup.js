@@ -1,8 +1,9 @@
 import { projectAuth } from "../firebase/config";
 import { useAuthContext } from "../hooks/useAuthContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export function useSignup() {
+  const [isCancelled, setIsCancelled] = useState(false); //Cleanup function sets this in useEffect
   const [error, setError] = useState(null);
   const [isPending, setIsPending] = useState(false);
   const { dispatch } = useAuthContext();
@@ -28,14 +29,21 @@ export function useSignup() {
       // dispatch login action
       dispatch({ type: "LOGIN", payload: res.user });
 
-      setIsPending(false);
-      setError(null);
+      if (!isCancelled) {
+        //Cleanup function using IFs
+        setIsPending(false);
+        setError(null);
+      }
     } catch (err) {
-      console.log(err.message);
-      setError(err.message);
-      setIsPending(false);
+      if (!isCancelled) {
+        console.log(err.message);
+        setError(err.message);
+        setIsPending(false);
+      }
     }
   };
-
+  useEffect(() => {
+    return () => setIsCancelled(true); // cleanup function
+  }, []);
   return { error, isPending, signup };
 }

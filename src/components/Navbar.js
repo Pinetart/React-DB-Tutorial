@@ -4,7 +4,7 @@ import styles from "./Navbar.module.css";
 import { useLogout } from "../hooks/useLogout";
 
 export default function Navbar() {
-  const { error, isPending, logout } = useLogout();
+  const { logout } = useLogout();
 
   return (
     <nav className={styles["navbar"]}>
