@@ -51,7 +51,7 @@ export default function Signup() {
         ></input>
       </label>
       {!isPending && <button className="btn">Signup</button>}
-      {error && <p>{error}</p>}
+      {error && <p style={{ marginTop: 20, textAlign: "center" }}>{error}</p>}
       {isPending && (
         <button className="btn" disabled>
           Loading
