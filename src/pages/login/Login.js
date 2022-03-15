@@ -2,14 +2,14 @@ import { React, useState } from "react";
 import styles from "./Login.module.css";
 
 export default function Login() {
-  const [email, SetEmail] = useState("");
-  const [password, SetPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
     console.log(email, password);
-    SetEmail("");
-    SetPassword("");
+    setEmail("");
+    setPassword("");
   }
 
   return (
@@ -20,7 +20,7 @@ export default function Login() {
         <input
           type="email"
           onChange={(e) => {
-            SetEmail(e.target.value);
+            setEmail(e.target.value);
           }}
           value={email}
         ></input>
@@ -30,7 +30,7 @@ export default function Login() {
         <input
           type="password"
           onChange={(e) => {
-            SetPassword(e.target.value);
+            setPassword(e.target.value);
           }}
           value={password}
         ></input>
