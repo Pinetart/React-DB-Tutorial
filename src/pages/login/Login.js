@@ -11,8 +11,6 @@ export default function Login() {
     e.preventDefault();
     console.log(email, password);
     login(email, password);
-    setEmail("");
-    setPassword("");
   }
 
   return (
