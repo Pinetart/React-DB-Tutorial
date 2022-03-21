@@ -79,4 +79,5 @@ textarea {
   border-radius: 4px;
   padding: 8px;
   margin: 10px 0;
+  word-wrap: break-word;
 }
