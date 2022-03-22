@@ -28,6 +28,7 @@ export default function Dashboard() {
             document.assignedUserList.forEach((u) => {
               if (u.id === user.uid) {
                 assignedToMe = true;
+                //
               }
             });
             return assignedToMe;
