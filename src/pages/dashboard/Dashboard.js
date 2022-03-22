@@ -1,4 +1,6 @@
 import { useCollection } from "../../hooks/useCollection";
+
+// components
 import ProjectList from "../../components/ProjectList";
 
 // styles
