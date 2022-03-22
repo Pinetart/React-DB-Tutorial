@@ -13,8 +13,10 @@ export const useDocument = (collection, id) => {
       (snapshot) => {
         // need to make sure the doc exists & has data
         if (snapshot.data()) {
-          setDocument({ ...snapshot.data(), id: snapshot.id });
-          setError(null);
+          if (snapshot.data()) {
+            setDocument({ ...snapshot.data(), id: snapshot.id });
+            setError(null);
+          }
         } else {
           setError("No such document exists");
         }
