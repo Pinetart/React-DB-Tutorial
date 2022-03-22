@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
 export default function ProjectSummary({ project }) {
+  console.log(project);
   const { deleteDocument } = useFirestore("projects");
   const { user } = useAuthContext();
   const history = useHistory();
@@ -17,6 +18,12 @@ export default function ProjectSummary({ project }) {
     <div>
       <div className="project-summary">
         <h2 className="page-title">{project.name}</h2>
+        <p style={{ color: "var(--text-color)", fontSize: "16px" }}>
+          By&nbsp;
+          <span style={{ color: "#323232", fontSize: "16px" }}>
+            {project.createdBy.displayName}
+          </span>
+        </p>
         <p className="due-date">
           Project due by {project.dueDate.toDate().toDateString()}
         </p>
