@@ -3,6 +3,8 @@ import Select from "react-select";
 import { useCollection } from "../../hooks/useCollection";
 import { timestamp } from "../../firebase/config";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import { useFirestore } from "../../hooks/useFirestore";
+import { useHistory } from "react-router-dom";
 
 // styles
 import "./Create.css";
@@ -18,6 +20,8 @@ export default function Create() {
   const { documents } = useCollection("users");
   const [users, setUsers] = useState([]);
   const { user } = useAuthContext();
+  const { addDocument, response } = useFirestore("projects");
+  const history = useHistory();
 
   // form field values
   const [name, setName] = useState("");
@@ -62,7 +66,7 @@ export default function Create() {
         id: u.value.id,
       };
     });
-    console.log(assignedUsers);
+
     const project = {
       name,
       details,
@@ -72,7 +76,11 @@ export default function Create() {
       createdBy,
       assignedUserList,
     };
-    console.log(project);
+
+    await addDocument(project);
+    if (!response.error) {
+      history.push("/");
+    }
   };
 
   return (
